@@ -2,1014 +2,813 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>贵州新闻网 - 最新资讯平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武汉市正声文化传媒有限公司 - 专业品牌营销解决方案</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         :root {
-            --primary: #1a73e8;
-            --secondary: #0d47a1;
-            --accent: #ff6d00;
-            --light: #f5f7fa;
-            --dark: #202124;
-            --gray: #5f6368;
+            --primary: #2563eb;
+            --secondary: #1e293b;
+            --accent: #f97316;
+            --light: #f8fafc;
+            --dark: #0f172a;
         }
         
         body {
-            background-color: #f0f2f5;
+            background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
         }
         
-        /* 容器统一设置 */
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
         
+        /* 导航栏样式 */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 0.8rem 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            position: sticky;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
         
-        .header-container {
+        nav {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            padding: 0 15px;
+            padding: 20px 0;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin: 5px 0;
+            color: var(--primary);
         }
         
-        .logo i {
+        .logo span {
             color: var(--accent);
         }
         
-        .search-container {
+        .nav-links {
             display: flex;
-            width: 100%;
-            max-width: 500px;
-            margin: 10px 0;
-            background: white;
-            border-radius: 50px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            list-style: none;
         }
         
-        .search-container input {
-            flex: 1;
-            border: none;
-            padding: 0.8rem 1.2rem;
-            font-size: 1rem;
-            outline: none;
+        .nav-links li {
+            margin-left: 30px;
         }
         
-        .search-container button {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 0 1.5rem;
-            cursor: pointer;
-            transition: background 0.3s;
-            min-width: 60px;
-        }
-        
-        .search-container button:hover {
-            background: #e65100;
-        }
-        
-        nav {
-            background: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .nav-container {
-            width: 100%;
-            padding: 0 15px;
-        }
-        
-        .nav-tabs {
-            display: flex;
-            overflow-x: auto;
-            padding: 10px 0;
-            -webkit-overflow-scrolling: touch;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        
-        .nav-tabs::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .tab {
-            padding: 0.7rem 1.2rem;
-            white-space: nowrap;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s;
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
             font-weight: 500;
-            color: var(--gray);
-            font-size: 0.95rem;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s;
         }
         
-        .tab:hover, .tab.active {
+        .nav-links a:hover {
             color: var(--primary);
-            border-bottom: 3px solid var(--primary);
         }
         
-        .main-container {
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
             width: 100%;
-            margin: 1.5rem auto;
-            padding: 0 15px;
         }
         
-        .content-section {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+        
+        /* 英雄区域样式 */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.8) 0%, rgba(30, 41, 59, 0.9) 100%), url('https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: #ea580c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+        }
+        
+        /* 关于我们区域 */
+        .section {
+            padding: 100px 0;
         }
         
         .section-title {
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
-            color: var(--dark);
-            padding-bottom: 0.6rem;
-            border-bottom: 2px solid var(--light);
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .about-content {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 50px;
         }
         
-        .section-title i {
-            color: var(--accent);
+        .about-text {
+            flex: 1;
         }
         
-        .news-grid {
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .about-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
         }
         
-        .news-card {
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-item i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .stat-item h4 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .about-image {
+            flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* 服务区域 */
+        .services {
+            background-color: #f1f5f9;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
             background: white;
-        }
-        
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-        
-        .card-image {
-            height: 160px;
+            border-radius: 10px;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
         }
         
-        .card-image img {
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        /* 作品展示 */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
         }
         
-        .news-card:hover .card-image img {
-            transform: scale(1.05);
-        }
-        
-        .card-content {
-            padding: 1.2rem;
-        }
-        
-        .news-category {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            font-size: 0.75rem;
-            padding: 0.25rem 0.7rem;
-            border-radius: 20px;
-            margin-bottom: 0.7rem;
-        }
-        
-        .news-title {
-            font-size: 1.1rem;
-            margin-bottom: 0.7rem;
-            color: var(--dark);
-            line-height: 1.4;
-            word-break: break-word;
-        }
-        
-        .news-excerpt {
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-            line-height: 1.5;
-        }
-        
-        .news-meta {
-            display: flex;
-            justify-content: space-between;
-            color: #9aa0a6;
-            font-size: 0.8rem;
-        }
-        
-        .welcome-section {
-            background: linear-gradient(135deg, #1a73e8, #0d47a1);
-            color: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        .welcome-title {
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-        }
-        
-        .welcome-subtitle {
-            font-size: 1rem;
-            max-width: 100%;
-            margin: 0 auto 1.5rem;
-            opacity: 0.9;
-            line-height: 1.5;
-        }
-        
-        .intro-text {
-            background: white;
-            border-radius: 12px;
-            padding: 1.8rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-        
-        .intro-text p {
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-        }
-        
-        .intro-text h2 {
-            color: var(--primary);
-            margin: 1.5rem 0 0.8rem;
-            font-size: 1.4rem;
-        }
-        
-        .intro-text img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 1rem auto;
-            border-radius: 8px;
-        }
-
-        .featured-news {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-        
-        .main-feature {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            height: 300px;
-        }
-        
-        .main-feature img {
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background: rgba(37, 99, 235, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         
-        .feature-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            padding: 1.5rem;
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        /* 联系方式 */
+        .contact {
+            background-color: var(--secondary);
             color: white;
         }
         
-        .feature-title {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
+        .contact .section-title h2 {
+            color: white;
         }
         
-        .side-features {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-        
-        .side-feature {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            background: white;
-            border-radius: 10px;
-            padding: 0.9rem;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        }
-        
-        .side-feature img {
-            width: 90px;
-            height: 70px;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-        
-        .side-content {
-            flex: 1;
-        }
-        
-        .side-content h3 {
-            font-size: 0.95rem;
-            margin-bottom: 0.4rem;
-            line-height: 1.3;
-        }
-        
-        .category-highlights {
+        .contact-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.2rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
         
-        .category-card {
-            background: white;
-            border-radius: 10px;
-            padding: 1.2rem;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--accent);
+            width: 30px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.3rem;
             transition: all 0.3s;
         }
         
-        .category-card:hover {
+        .social-links a:hover {
+            background-color: var(--accent);
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         
-        .category-icon {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 0.8rem;
+        .contact-form .form-group {
+            margin-bottom: 20px;
         }
         
-        .category-title {
-            font-size: 1.1rem;
-            margin-bottom: 0.4rem;
-        }
-        
-        footer {
-            background: var(--dark);
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
             color: white;
-            padding: 2.5rem 0 1.5rem;
-            margin-top: 2.5rem;
+            font-size: 1rem;
         }
         
-        .footer-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.8rem;
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
         
-        .footer-column h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-            position: relative;
-            padding-bottom: 0.4rem;
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
         }
         
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 35px;
-            height: 2px;
-            background: var(--accent);
+        /* 页脚 */
+        footer {
+            background-color: var(--dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 50px 0 20px;
+            text-align: center;
         }
         
-        .footer-column ul {
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
             list-style: none;
+            margin: 30px 0;
         }
         
-        .footer-column ul li {
-            margin-bottom: 0.7rem;
+        .footer-links li {
+            margin: 0 15px;
         }
         
-        .footer-column ul li a {
-            color: #e8eaed;
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: color 0.3s;
-            font-size: 0.9rem;
-            display: block;
-            padding: 3px 0;
         }
         
-        .footer-column ul li a:hover {
+        .footer-links a:hover {
             color: var(--accent);
         }
         
         .copyright {
-            text-align: center;
-            padding-top: 1.8rem;
-            margin-top: 1.8rem;
-            border-top: 1px solid #3c4043;
-            color: #9aa0a6;
-            font-size: 0.85rem;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
         }
         
-        .hidden {
-            display: none;
-        }
-        
-        /* 中屏幕（平板）样式 */
-        @media (min-width: 600px) {
-            .featured-news {
-                grid-template-columns: 1.5fr 1fr;
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
             }
             
-            .category-highlights {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .welcome-title {
-                font-size: 2rem;
-            }
-            
-            .welcome-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 1.7rem;
+            .hero h1 {
+                font-size: 2.8rem;
             }
         }
         
-        /* 大屏幕（桌面）样式 */
-        @media (min-width: 900px) {
-            .header-container {
-                flex-wrap: nowrap;
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
             }
             
-            .logo {
-                font-size: 1.8rem;
-                margin: 0;
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: all 0.4s;
             }
             
-            .search-container {
-                width: 45%;
-                margin: 0;
+            .nav-links.active {
+                left: 0;
             }
             
-            .featured-news {
-                gap: 2rem;
+            .nav-links li {
+                margin: 15px 0;
             }
             
-            .main-feature {
-                height: 350px;
+            .hero h1 {
+                font-size: 2.3rem;
             }
             
-            .feature-overlay {
-                padding: 2rem;
-            }
-            
-            .feature-title {
-                font-size: 1.6rem;
-            }
-            
-            .category-highlights {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1.5rem;
-            }
-            
-            .footer-container {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .welcome-section {
-                padding: 2.5rem;
-            }
-            
-            .welcome-title {
-                font-size: 2.2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-        }
-        
-        /* 超大屏幕样式 */
-        @media (min-width: 1200px) {
-            .main-feature {
-                height: 400px;
-            }
-            
-            .welcome-section {
-                padding: 3rem;
-            }
-            
-            .welcome-title {
-                font-size: 2.5rem;
-            }
-            
-            .welcome-subtitle {
+            .hero p {
                 font-size: 1.2rem;
             }
-        }
-        
-        /* 防止文本溢出 */
-        .news-title, .feature-title, .side-content h3 {
-            word-break: break-word;
-            overflow-wrap: break-word;
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
-<body> 
 <body>
-    <!-- 头部区域 -->
+    <!-- 导航栏 -->
     <header>
-        <div class="header-container">
-            <div class="logo">
-                <i class="fas fa-globe-americas"></i>
-                <span>贵州新闻网</span>
-            </div>
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="搜索新闻...">
-                <button id="search-btn"><i class="fas fa-search"></i></button>
-            </div>
+        <div class="container">
+            <nav>
+                <div class="logo">武汉市正声文化传媒有限公司</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#services">产品服务</a></li>
+                    <li><a href="#portfolio">成功案例</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
         </div>
     </header>
-    
-    <!-- 导航栏 -->
-    <nav>
-        <div class="nav-container">
-            <div class="nav-tabs">
-                <div class="tab active" data-category="home">首页</div>
-                <div class="tab" data-category="politics">政治</div>
-                <div class="tab" data-category="economy">经济</div>
-                <div class="tab" data-category="technology">科技</div>
-                <div class="tab" data-category="sports">体育</div>
-                <div class="tab" data-category="entertainment">娱乐</div>
-                <div class="tab" data-category="health">健康</div>
-                <div class="tab" data-category="international">国际</div>
+
+    <!-- 首页英雄区域 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>武汉市正声文化传媒广告解决方案，助力品牌腾飞</h1>
+            <p>专业团队提供全方位品牌策划、数字营销及创意设计服务</p>
+            <a href="#contact" class="btn">立即咨询</a>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于我们</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>15年专业广告营销经验</h3>
+                    <p>武汉市正声文化传媒有限公司成立于2023年，是一家专注于品牌策划、数字营销和创意设计的综合性广告公司。我们致力于为客户提供全方位的广告解决方案，帮助品牌在竞争激烈的市场中脱颖而出。</p>
+                    <p>我们的团队由行业资深专家组成，拥有丰富的营销经验和创意设计能力。我们始终坚持以客户为中心，以结果为导向，为客户创造最大价值。</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-users"></i>
+                            <h4>200+</h4>
+                            <p>服务客户</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-trophy"></i>
+                            <h4>36</h4>
+                            <p>行业奖项</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-project-diagram"></i>
+                            <h4>500+</h4>
+                            <p>完成项目</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="image\p1.jpg" alt="武汉市正声文化传媒有限公司">
+                </div>
             </div>
         </div>
-    </nav>
-    
-    <!-- 主要内容区域 -->
-    <main class="main-container">
-        <!-- 首页内容 -->
-        <section id="home-content" class="content-section">
-            <div class="welcome-section">
-                <h1 class="welcome-title">欢迎来到贵州新闻网</h1>
-                <p class="welcome-subtitle">第一时间获取最新资讯，深度解析热点事件，多角度呈现新闻真相</p>
+    </section>
+
+    <!-- 产品服务 -->
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="section-title">
+                <h2>我们的服务</h2>
             </div>
-            
-            <div class="intro-text">
-                <h2>应急供水工程背后的心酸：工人日夜奋战解民忧，地方拖欠款项寒人心</h2>
-                <p>近日，黔西市乡镇供水公司未能依法办理“23年输水管道延伸工程”结算程序，导致如今该工程未能审计、施工方投入成本无法回收、民工工资无法下发的现状。从23年3月至今，项目的最后结算成为亟待地方相关部门出面解决的问题，引起了社会的广泛关注。</p>
-                <h2>一、灾情无常人有情，民生所依供水急</h2>
-                <img src="image\图片1.png" class="intro-text image">
-                <img src="image\图片2.png" class="intro-text image">
-                <p>2023年期间，创记录的干旱不断持续，“供水告急”正在贵州毕节多地蔓延。因干旱的连续不断，西溪河水位持续下降，水量持续减少，群众基本生活用水得不到保障，以致该地不得不启动大规模分时分片供水。2023年2月20日，黔西市乡镇供水有限公司决定对西溪水源供水覆盖区域进行限时调节供水，以达到减少群众矛盾和解决供需不足的问题。2023年2月，由于黔西严重缺水，政府机关安排水务局乡镇供水公司执行应急供水工程。市政府成立该应急项目，由黔西市城区应急供水工程初步设计的批复，经专家的会议研究同意该项目的编制内容。23年2月黔西市乡镇供水有限公司邀请施工管理方负责人签定黔西市乡镇供水有限公司输水管道延伸工程施工承包协议，2023年7月正式招投标改项目名称：黔西市城区（樱桃坪水库）应急供水工程，项目编号：(GZSJYZC-2023-015)号。23年7月黔西市乡镇供水公司与贵州聚能建筑工程有限公司签署施工合同，合同金额为14465000.00元。</p>
-                <img src="image\图片3.png" class="intro-text image">
-                <img src="image\图片4.png" class="intro-text image">
-                <h2>二、利民项目结算无果，民工薪资所系何方</h2>
-                <p>从23年2月项目施工班入场到23年3月通水成功，这短短一个月的时间是民工团队六个班组日以继夜加点赶工成功让黔西市城区人民用好水、吃上水，试通成功时那涌动的水流声，施工班组工人们受的累流的汗都酿成胸的自豪，交织成了心中的甘泉，月余的辛苦不足外人道也。</p>
-                <img src="image\图片5.png" class="intro-text image">
-                <p>但令所有人没想到的是，在2023年3月24日项目甲方、监理方、审计方、施工方草签单俊工验收完毕签字后，黔西市乡镇供水有限公司故意拖延竣工审计结算，导致工程竣工资料无法完善，高达1000多万的款项未能结清。业主单位行为不合行业规定的问题在结算时显露无遗，回头看来其在施工前强行要求6个班组预先支付了50万到100万元不等的施工保证金用于购买管道材料款的操作就以埋下伏笔。“项目施工委屈多，民工疑惑谁人答？“项目施工管理人员反映：“从在施工过程中发包方陆续支付了我们一小部分工程款，后面每年象征性支付一小点款项（截止目前约支付工程款450万元），现因业主单位没有钱支付相关服务单位，导致我们工程竣工资料无法完善，其公司也这样故意拖着竣工审计结算不给我们办理，现在我们连施工前交的保证金也不退还，每次都说等市政府相关领导签字拨款。”施工组劳动工人反映：“施工段完成做简单验收后就没有后续了，也没有相关单位人员出面安置我们的工资问题。之前黔西严重缺水，新闻上都有报道， 是当地政府牵头的搞项目。现在项目我们都搞完成了，地方部门有项目功绩去应付去当差，但我们的工资呢？项目是为了老百姓，我们也是老百姓，怎么做的事情越多，受的委屈就越大呢？“</p>
-                <img src="image\图片6.png" class="intro-text image">
-                
-                <p>”多方反映无果，推诿拉扯寒心！“ 进场起始昼夜不息加，外购泥土恢复耕地，桩桩件件付出，只求百姓用水稳定，施工完成两年有余，班组薪资款项仍未付清。施工组预先投入成本，解决的是黔西脱离无水吃，无水用的困境。民生项目现在已经落地了，但施工班组结算问题却无人相关部门出面解决。贵州聚能建筑工程有限公司多次信访和拨打政务反映热线，回复的是”等通知“，都没有实质的回复和解决方案，最后都是石沉大海。</p>
-                <img src="image\图片7.png" class="intro-text image">
-                <h2>三、我替他人利民生，他人替我赢民生</h2>
-                <p>应急供水工程本是为民解忧的善举，是维系人民生活物质的良好举措，但如若施工劳动工人的合法权益得不到保障，再好的民生项目也会蒙上阴影。施工方的老板们呕心沥血，将大部分精力根植于该项目工程上，东驰西骋的寻找各个部门，但都徒劳无功。这一工程款的拖欠，不仅仅是公司面临的巨大压力，更是民工民生巨大生存问题的体现。工人们的“救命稻草”一直搁置，将劳苦民工的基本权益立处于深渊红线。劳动民工流汗又“流泪”，凭借着弱小的身躯扛起社会的重任，即使是重于泰山的“陨石”，民工百姓们也是任劳任怨的负重前行，没有一丝怨言，秉持着为众民谋福祉，为社会谋复兴，为国家谋富强的核心发展理念，肩负重任，砥砺前行。我们在保障众多人民生活质量的同时，也不应忘记相关人员刻苦耐劳中的一丝不苟。如若没有劳动人员的付出，就没有安居乐业的美好景象。希望法律法规能真正的解决身处忧患的困难者，将劳动者的的合法权益得到基本的保障。只有国泰民安才能引领时代突飞猛进，身为人民，每一位前行者都需要整理自己的行径。希望相关部门能合理化处理相似事件，同时加强管理，杜绝劳动民工被拖欠工资的问题!</p>
-            </div>
-            
-            <h2 class="section-title"><i class="fas fa-star"></i> 焦点新闻</h2>
-            <div class="featured-news">
-                <div class="main-feature">
-                    <img src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="全球气候峰会达成历史性协议">
-                    <div class="feature-overlay">
-                        <h3 class="feature-title">全球气候峰会达成历史性协议，各国承诺加速减排</h3>
-                        <p>经过两周紧张谈判，196个国家就气候变化问题达成突破性协议...</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>品牌策略与定位</h3>
+                        <p>通过市场分析和消费者洞察，为品牌制定差异化定位和长期发展战略，建立独特的品牌形象和核心价值。</p>
                     </div>
                 </div>
-                <div class="side-features">
-                    <div class="side-feature">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="科技突破">
-                        <div class="side-content">
-                            <h3>量子计算新突破，科学家实现千公里量子纠缠</h3>
-                            <div class="news-meta">
-                                <span>科技频道</span>
-                                <span>2小时前</span>
-                            </div>
-                        </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <div class="side-feature">
-                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="体育新闻">
-                        <div class="side-content">
-                            <h3>世界杯预选赛：亚洲区强队爆冷出局</h3>
-                            <div class="news-meta">
-                                <span>体育频道</span>
-                                <span>5小时前</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="side-feature">
-                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="经济新闻">
-                        <div class="side-content">
-                            <h3>全球经济复苏超预期，IMF上调增长预测</h3>
-                            <div class="news-meta">
-                                <span>经济频道</span>
-                                <span>8小时前</span>
-                            </div>
-                        </div>
+                    <div class="service-content">
+                        <h3>数字营销</h3>
+                        <p>涵盖社交媒体营销、搜索引擎优化、内容营销等全方位数字营销服务，提升品牌在线影响力。</p>
                     </div>
                 </div>
-            </div>
-            
-            <h2 class="section-title"><i class="fas fa-th-large"></i> 新闻分类</h2>
-            <div class="category-highlights">
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-landmark"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
                     </div>
-                    <h3 class="category-title">政治</h3>
-                    <p>政府政策、选举动态、国际关系</p>
+                    <div class="service-content">
+                        <h3>创意设计</h3>
+                        <p>专业的平面设计、UI/UX设计、视频制作和动画设计服务，打造令人印象深刻的视觉体验。</p>
+                    </div>
                 </div>
-                <div class="category-card">
-                    <div class="category-icon">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>移动营销</h3>
+                        <p>APP推广、移动广告投放、小程序开发等移动端营销解决方案，抓住移动互联网机遇。</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3 class="category-title">经济</h3>
-                    <p>金融市场、产业政策、商业动态</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-microchip"></i>
+                    <div class="service-content">
+                        <h3>媒体投放</h3>
+                        <p>精准的媒体策划和购买服务，涵盖传统媒体和数字媒体，最大化广告投放效果。</p>
                     </div>
-                    <h3 class="category-title">科技</h3>
-                    <p>技术创新、互联网、人工智能</p>
                 </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-baseball-ball"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
                     </div>
-                    <h3 class="category-title">体育</h3>
-                    <p>赛事报道、运动员动态、体育产业</p>
+                    <div class="service-content">
+                        <h3>市场调研</h3>
+                        <p>专业的市场研究和消费者洞察服务，为营销决策提供数据支持和科学依据。</p>
+                    </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- 其他分类内容（默认隐藏） -->
-        <section id="politics-content" class="content-section hidden">
-            <h2 class="section-title"><i class="fas fa-landmark"></i> 政治新闻</h2>
-            <div class="news-grid" id="politics-news">
-                <!-- 政治新闻将通过JS动态生成 -->
+        </div>
+    </section>
+
+    <!-- 作品展示 -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>成功案例</h2>
             </div>
-        </section>
-        
-        <section id="economy-content" class="content-section hidden">
-            <h2 class="section-title"><i class="fas fa-chart-line"></i> 经济新闻</h2>
-            <div class="news-grid" id="economy-news">
-                <!-- 经济新闻将通过JS动态生成 -->
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3" alt="品牌重塑案例">
+                    <div class="portfolio-overlay">
+                        <h3>品牌重塑案例</h3>
+                        <p>帮助传统企业实现品牌年轻化转型</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3" alt="数字营销案例">
+                    <div class="portfolio-overlay">
+                        <h3>数字营销案例</h3>
+                        <p>3个月实现社交媒体粉丝增长300%</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3" alt="产品推广案例">
+                    <div class="portfolio-overlay">
+                        <h3>产品推广案例</h3>
+                        <p>新产品上市首月销量突破行业记录</p>
+                    </div>
+                </div>
             </div>
-        </section>
-        
-        <section id="technology-content" class="content-section hidden">
-            <h2 class="section-title"><i class="fas fa-microchip"></i> 科技新闻</h2>
-            <div class="news-grid" id="technology-news">
-                <!-- 科技新闻将通过JS动态生成 -->
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系我们</h2>
             </div>
-        </section>
-        
-        <section id="sports-content" class="content-section hidden">
-            <h2 class="section-title"><i class="fas fa-baseball-ball"></i> 体育新闻</h2>
-            <div class="news-grid" id="sports-news">
-                <!-- 体育新闻将通过JS动态生成 -->
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>获取专业咨询</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> 湖北省武汉市东西湖区常青花园街公园环路127号-E038</p>
+                        <p><i class="fas fa-phone-alt"></i> 13277452522</p>
+                        <p><i class="fas fa-envelope"></i> 1311137079@qq.com</p>
+                        <p><i class="fas fa-clock"></i> 周一至周五: 9:00 - 18:00</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="您的电话">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="您的需求"></textarea>
+                        </div>
+                        <button type="submit" class="btn">提交咨询</button>
+                    </form>
+                </div>
             </div>
-        </section>
-        
-        <section id="entertainment-content" class="content-section hidden">
-            <h2 class="section-title"><i class="fas fa-film"></i> 娱乐新闻</h2>
-            <div class="news-grid" id="entertainment-news">
-                <!-- 娱乐新闻将通过JS动态生成 -->
-            </div>
-        </section>
-        
-        <section id="health-content" class="content-section hidden">
-            <h2 class="section-title"><i class="fas fa-heartbeat"></i> 健康新闻</h2>
-            <div class="news-grid" id="health-news">
-                <!-- 健康新闻将通过JS动态生成 -->
-            </div>
-        </section>
-        
-        <section id="international-content" class="content-section hidden">
-            <h2 class="section-title"><i class="fas fa-globe-asia"></i> 国际新闻</h2>
-            <div class="news-grid" id="international-news">
-                <!-- 国际新闻将通过JS动态生成 -->
-            </div>
-        </section>
-    </main>
-    
+        </div>
+    </section>
+
     <!-- 页脚 -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>关于我们</h3>
-                <ul>
-                    <li><a href="#">公司简介</a></li>
-                    <li><a href="#">新闻团队</a></li>
-                    <li><a href="#">加入我们</a></li>
-                    <li><a href="#">联系方式</a></li>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">武汉市正声文化传媒有限公司</div>
+                <p>专业广告营销解决方案提供商</p>
+                <ul class="footer-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#services">产品服务</a></li>
+                    <li><a href="#portfolio">成功案例</a></li>
+                    <li><a href="#contact">联系我们</a></li>
                 </ul>
+                <div class="copyright">
+                    &copy; 2023 武汉市正声文化传媒有限公司. 保留所有权利. 
+                </div>
             </div>
-            <div class="footer-column">
-                <h3>新闻分类</h3>
-                <ul>
-                    <li><a href="#">政治</a></li>
-                    <li><a href="#">经济</a></li>
-                    <li><a href="#">科技</a></li>
-                    <li><a href="#">体育</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>服务条款</h3>
-                <ul>
-                    <li><a href="#">用户协议</a></li>
-                    <li><a href="#">隐私政策</a></li>
-                    <li><a href="#">版权声明</a></li>
-                    <li><a href="#">广告合作</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>关注我们</h3>
-                <ul>
-                    <li><a href="#"><i class="fab fa-weibo"></i> 微博</a></li>
-                    <li><a href="#"><i class="fab fa-weixin"></i> 微信</a></li>
-                    <li><a href="#"><i class="fab fa-tiktok"></i> 抖音</a></li>
-                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>© 2025 贵州新闻网 版权所有 | 互联网新闻信息服务许可证：314850037</p>
         </div>
     </footer>
-    
+
     <script>
-        // 新闻数据
-        const newsData = {
-            politics: [
-                {id: 1, title: "全国人大会议在京开幕，政府工作报告聚焦民生", excerpt: "国务院总理作政府工作报告，提出今年发展主要预期目标...", category: "政治", date: "2023-03-05"},
-                {id: 2, title: "多国领导人就国际局势发表联合声明", excerpt: "二十国集团领导人举行视频峰会，就全球经济复苏等议题交换意见...", category: "政治", date: "2023-03-04"},
-                {id: 3, title: "地方选举结果揭晓，新一届领导班子产生", excerpt: "多个省市完成地方选举，产生新一届人大、政府领导班子...", category: "政治", date: "2023-03-03"},
-                {id: 4, title: "外交部长出席国际会议阐述中国立场", excerpt: "外交部长在联合国会议上阐述中国在重大国际问题上的立场...", category: "政治", date: "2023-03-02"},
-                {id: 5, title: "新修订的法律法规今起正式实施", excerpt: "一批新修订的法律法规正式施行，涉及民生、经济等多个领域...", category: "政治", date: "2023-03-01"},
-                {id: 6, title: "政党高层会议讨论国家发展规划", excerpt: "主要政党召开高层会议，研讨未来五年国家发展规划...", category: "政治", date: "2023-02-28"},
-                {id: 7, title: "国务院发布乡村振兴新政策", excerpt: "国务院印发指导意见，全面推进乡村振兴重点工作...", category: "政治", date: "2023-02-27"},
-                {id: 8, title: "全国政协会议聚焦高质量发展", excerpt: "全国政协会议在京召开，委员们围绕高质量发展建言献策...", category: "政治", date: "2023-02-26"},
-                {id: 9, title: "反腐工作取得新进展，多名官员被查", excerpt: "纪检监察机关公布最新反腐成果，多名涉嫌违纪违法官员被查...", category: "政治", date: "2023-02-25"}
-            ],
-            economy: [
-                {id: 1, title: "央行降准释放长期资金约1万亿元", excerpt: "中国人民银行宣布下调金融机构存款准备金率0.5个百分点...", category: "经济", date: "2023-03-05"},
-                {id: 2, title: "A股市场迎来开门红，主要指数大幅上涨", excerpt: "在政策利好推动下，A股三大股指集体走高，创业板指涨超3%...", category: "经济", date: "2023-03-04"},
-                {id: 3, title: "1月CPI同比上涨1.5%，物价保持平稳", excerpt: "国家统计局数据显示，1月份居民消费价格指数同比上涨1.5%...", category: "经济", date: "2023-03-03"},
-                {id: 4, title: "新能源汽车销量再创新高", excerpt: "2月新能源汽车销量同比增长120%，市场渗透率突破30%...", category: "经济", date: "2023-03-02"},
-                {id: 5, title: "跨境电商新政出台，行业迎来新机遇", excerpt: "财政部等部委联合发布跨境电商零售进口新政，扩大商品范围...", category: "经济", date: "2023-03-01"},
-                {id: 6, title: "国际油价大幅波动，国内成品油价格上调", excerpt: "受国际局势影响，原油价格大幅波动，国内油价迎来年内第三次上调...", category: "经济", date: "2023-02-28"},
-                {id: 7, title: "制造业PMI连续三个月处于扩张区间", excerpt: "2月制造业采购经理指数为50.6%，连续三个月高于临界点...", category: "经济", date: "2023-02-27"},
-                {id: 8, title: "数字人民币试点范围再扩大", excerpt: "数字人民币试点范围新增11个城市，应用场景不断丰富...", category: "经济", date: "2023-02-26"},
-                {id: 9, title: "房地产市场逐步回暖，政策效应显现", excerpt: "多项支持政策下，重点城市房地产市场出现回暖迹象...", category: "经济", date: "2023-02-25"}
-            ],
-            technology: [
-                {id: 1, title: "我国成功发射新一代通信技术试验卫星", excerpt: "长征系列运载火箭成功将新一代通信技术试验卫星送入预定轨道...", category: "科技", date: "2023-03-05"},
-                {id: 2, title: "6G技术研发取得阶段性突破", excerpt: "我国科研团队在6G关键技术领域取得重要进展，完成概念验证...", category: "科技", date: "2023-03-04"},
-                {id: 3, title: "人工智能大模型在多个领域实现应用", excerpt: "国产人工智能大模型在医疗、金融等领域落地应用，效果显著...", category: "科技", date: "2023-03-03"},
-                {id: 4, title: "量子计算机原型机实现算力突破", excerpt: "我国科学家研发的量子计算机原型机实现特定任务算力超越经典计算机...", category: "科技", date: "2023-03-02"},
-                {id: 5, title: "新能源汽车电池技术取得新突破", excerpt: "新型固态电池能量密度提升40%，充电时间缩短至15分钟...", category: "科技", date: "2023-03-01"},
-                {id: 6, title: "国产操作系统发布重大更新", excerpt: "国产操作系统发布3.0版本，兼容性、安全性大幅提升...", category: "科技", date: "2023-02-28"},
-                {id: 7, title: "脑机接口技术实现临床应用突破", excerpt: "科研团队利用脑机接口技术帮助瘫痪患者实现意念控制机械臂...", category: "科技", date: "2023-02-27"},
-                {id: 8, title: "元宇宙产业标准制定工作启动", excerpt: "行业协会联合多家企业启动元宇宙产业标准制定工作...", category: "科技", date: "2023-02-26"},
-                {id: 9, title: "深海探测技术取得新进展", excerpt: "自主研发的深海探测器下潜深度突破10000米，创世界纪录...", category: "科技", date: "2023-02-25"}
-            ],
-            sports: [
-                {id: 1, title: "世界田径锦标赛：我国选手摘得两金", excerpt: "在世界田径锦标赛上，我国运动员在跳远和竞走项目上获得金牌...", category: "体育", date: "2023-03-05"},
-                {id: 2, title: "足球联赛上演同城德比，主场球队大胜", excerpt: "国内足球联赛焦点战，主场球队4-1大胜同城对手...", category: "体育", date: "2023-03-04"},
-                {id: 3, title: "冬奥冠军宣布退役，将转型教练", excerpt: "著名冬奥会冠军在社交媒体宣布退役，未来将担任青少年教练...", category: "体育", date: "2023-03-03"},
-                {id: 4, title: "国际乒联最新排名：我国选手包揽前三", excerpt: "国际乒联公布最新世界排名，我国选手包揽男女单打前三名...", category: "体育", date: "2023-03-02"},
-                {id: 5, title: "篮球联赛全明星周末圆满落幕", excerpt: "职业篮球联赛全明星周末活动结束，多项赛事创造新纪录...", category: "体育", date: "2023-03-01"},
-                {id: 6, title: "游泳世锦赛：新星打破亚洲纪录", excerpt: "游泳世锦赛上，我国19岁小将打破男子200米自由泳亚洲纪录...", category: "体育", date: "2023-02-28"},
-                {id: 7, title: "电子竞技国际邀请赛我国战队夺冠", excerpt: "在备受关注的电子竞技国际邀请赛上，我国战队3-2险胜夺冠...", category: "体育", date: "2023-02-27"},
-                {id: 8, title: "网球公开赛：我国选手首进八强", excerpt: "国际网球公开赛，我国选手首次闯入八强，创造个人最好成绩...", category: "体育", date: "2023-02-26"},
-                {id: 9, title: "马拉松赛事回归，数万人参与", excerpt: "大型城市马拉松赛事重启，吸引全球3万余名选手参加...", category: "体育", date: "2023-02-25"}
-            ],
-            entertainment: [
-                {id: 1, title: "国际电影节开幕，多部华语片入围", excerpt: "第76届国际电影节开幕，三部华语影片入围主竞赛单元...", category: "娱乐", date: "2023-03-05"},
-                {id: 2, title: "知名导演新片定档暑期，预告片引热议", excerpt: "著名导演新作宣布定档暑期，首支预告片24小时播放破千万...", category: "娱乐", date: "2023-03-04"},
-                {id: 3, title: "音乐颁奖典礼举行，新生代歌手成赢家", excerpt: "年度音乐颁奖典礼落幕，多位新生代歌手斩获重要奖项...", category: "娱乐", date: "2023-03-03"},
-                {id: 4, title: "经典电视剧确定翻拍，主演阵容公布", excerpt: "经典电视剧宣布翻拍，新一代演员阵容引发网友讨论...", category: "娱乐", date: "2023-03-02"},
-                {id: 5, title: "影帝影后联袂出演话剧，门票秒罄", excerpt: "多位影帝影后联袂出演的话剧首演，门票开售即秒罄...", category: "娱乐", date: "2023-03-01"},
-                {id: 6, title: "流行歌手世界巡演开启，首站火爆", excerpt: "国际流行歌手世界巡演首站演出，3万张门票全部售罄...", category: "娱乐", date: "2023-02-28"},
-                {id: 7, title: "纪录片获国际大奖，导演分享创作故事", excerpt: "国产纪录片在国际电影节获奖，导演分享幕后创作故事...", category: "娱乐", date: "2023-02-27"},
-                {id: 8, title: "热门综艺节目迎来最终季", excerpt: "播出多年的热门综艺宣布最终季计划，老成员全员回归...", category: "娱乐", date: "2023-02-26"},
-                {id: 9, title: "动画电影票房破纪录，续集确定制作", excerpt: "国产动画电影票房突破50亿，制作方宣布续集计划...", category: "娱乐", date: "2023-02-25"}
-            ],
-            health: [
-                {id: 1, title: "春季流感高发，专家建议做好防护", excerpt: "疾控中心提醒，春季流感进入高发期，建议公众做好防护...", category: "健康", date: "2023-03-05"},
-                {id: 2, title: "新研究揭示睡眠与健康关系", excerpt: "国际研究团队发现，规律睡眠对心血管健康有显著保护作用...", category: "健康", date: "2023-03-04"},
-                {id: 3, title: "抗癌新药获批上市，疗效显著", excerpt: "国家药监局批准新型抗癌药物上市，临床试验显示良好效果...", category: "健康", date: "2023-03-03"},
-                {id: 4, title: "春季养生指南：饮食运动建议", excerpt: "中医专家发布春季养生指南，推荐适合春季的饮食和运动方式...", category: "健康", date: "2023-03-02"},
-                {id: 5, title: "心理健康问题受关注，多地开设咨询热线", excerpt: "针对日益增多的心理健康问题，多地开设24小时心理咨询热线...", category: "健康", date: "2023-03-01"},
-                {id: 6, title: "研究显示：适度运动可延缓衰老", excerpt: "最新研究显示，坚持适度运动可延缓细胞衰老，延长健康寿命...", category: "健康", date: "2023-02-28"},
-                {id: 7, title: "新型可穿戴设备监测健康指标", excerpt: "科技公司推出新型可穿戴设备，可实时监测多项健康指标...", category: "健康", date: "2023-02-27"},
-                {id: 8, title: "全国爱耳日：专家提醒保护听力", excerpt: "全国爱耳日，专家提醒公众注意保护听力，避免长时间使用耳机...", category: "健康", date: "2023-02-26"},
-                {id: 9, title: "中医药防治慢性病研究取得进展", excerpt: "中医药在防治慢性病方面研究取得新进展，多个项目进入临床...", category: "健康", date: "2023-02-25"}
-            ],
-            international: [
-                {id: 1, title: "联合国召开紧急会议讨论地区冲突", excerpt: "联合国安理会就最新地区冲突召开紧急会议，呼吁各方克制...", category: "国际", date: "2023-03-05"},
-                {id: 2, title: "多国签署自由贸易协定，降低关税", excerpt: "十多个国家签署新自由贸易协定，将大幅降低相互间关税...", category: "国际", date: "2023-03-04"},
-                {id: 3, title: "国际空间站迎来新一批宇航员", excerpt: "国际空间站迎来新一批宇航员，其中包括首位该国女宇航员...", category: "国际", date: "2023-03-03"},
-                {id: 4, title: "世界文化遗产新增项目揭晓", excerpt: "联合国教科文组织公布最新世界文化遗产名录，新增25处...", category: "国际", date: "2023-03-02"},
-                {id: 5, title: "国际组织报告：全球贫困率下降", excerpt: "国际组织发布报告显示，全球极端贫困人口比例首次降至10%以下...", category: "国际", date: "2023-03-01"},
-                {id: 6, title: "多国联合打击跨国犯罪行动取得成果", excerpt: "国际刑警组织协调多国联合行动，破获大型跨国犯罪网络...", category: "国际", date: "2023-02-28"},
-                {id: 7, title: "全球旅游业复苏，国际航班数量大增", excerpt: "随着疫情缓解，全球旅游业快速复苏，国际航班数量恢复至疫情前85%...", category: "国际", date: "2023-02-27"},
-                {id: 8, title: "国际科技合作项目启动，聚焦气候变化", excerpt: "多国科学家联合启动大型科研项目，研究气候变化应对方案...", category: "国际", date: "2023-02-26"},
-                {id: 9, title: "国际电影节获奖影片将在多国展映", excerpt: "最新国际电影节获奖影片将在全球30多个国家进行特别展映...", category: "国际", date: "2023-02-25"}
-            ]
-        };
-
-        // 生成新闻卡片
-        function generateNewsCards(newsArray, containerId) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = '';
-            
-            newsArray.forEach(news => {
-                const card = document.createElement('div');
-                card.className = 'news-card';
-                
-                // 随机图片（实际项目中应使用真实图片URL）
-                const imageId = Math.floor(Math.random() * 1000);
-                const imageUrl = `https://picsum.photos/400/250?random=${imageId}`;
-                
-                card.innerHTML = `
-                    <div class="card-image">
-                        <img src="${imageUrl}" alt="${news.title}">
-                    </div>
-                    <div class="card-content">
-                        <span class="news-category">${news.category}</span>
-                        <h3 class="news-title">${news.title}</h3>
-                        <p class="news-excerpt">${news.excerpt}</p>
-                        <div class="news-meta">
-                            <span>${news.date}</span>
-                            <span><i class="far fa-eye"></i> ${Math.floor(Math.random() * 5000) + 1000}</span>
-                        </div>
-                    </div>
-                `;
-                
-                container.appendChild(card);
+        // 移动端菜单切换
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // 导航链接点击后关闭菜单
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
-        }
-
-        // 初始化新闻
-        function initNews() {
-            for (const category in newsData) {
-                if (newsData.hasOwnProperty(category)) {
-                    generateNewsCards(newsData[category], `${category}-news`);
-                }
-            }
-        }
-
-        // 切换内容
-        function switchContent(category) {
-            // 隐藏所有内容区域
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.add('hidden');
-            });
-            
-            // 显示选中的内容区域
-            document.getElementById(`${category}-content`).classList.remove('hidden');
-            
-            // 更新导航标签状态
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelector(`.tab[data-category="${category}"]`).classList.add('active');
-        }
-
-        // 搜索功能
-        function searchNews(keyword) {
-            if (!keyword.trim()) return;
-            
-            // 搜索所有新闻
-            let results = [];
-            for (const category in newsData) {
-                if (newsData.hasOwnProperty(category)) {
-                    const categoryResults = newsData[category].filter(news => 
-                        news.title.toLowerCase().includes(keyword.toLowerCase()) || 
-                        news.excerpt.toLowerCase().includes(keyword.toLowerCase())
-                    );
-                    results = results.concat(categoryResults);
-                }
-            }
-            
-            // 切换到首页并显示结果
-            switchContent('home');
-            
-            // 创建搜索结果区域
-            const homeContent = document.getElementById('home-content');
-            let resultsSection = document.getElementById('search-results');
-            
-            if (!resultsSection) {
-                resultsSection = document.createElement('div');
-                resultsSection.id = 'search-results';
-                resultsSection.className = 'content-section';
-                homeContent.appendChild(resultsSection);
-            }
-            
-            resultsSection.innerHTML = `
-                <h2 class="section-title"><i class="fas fa-search"></i> 搜索结果：${keyword}</h2>
-                <div class="news-grid" id="search-results-grid"></div>
-            `;
-            
-            if (results.length > 0) {
-                generateNewsCards(results, 'search-results-grid');
+        });
+        
+        // 滚动时导航栏样式变化
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
             } else {
-                document.getElementById('search-results-grid').innerHTML = `
-                    <div style="grid-column:1/-1; text-align:center; padding:2rem;">
-                        <h3>未找到相关新闻</h3>
-                        <p>请尝试其他关键词</p>
-                    </div>
-                `;
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
             }
-            
-            // 滚动到搜索结果
-            resultsSection.scrollIntoView({behavior: 'smooth'});
-        }
-
-        // 事件监听
-        document.addEventListener('DOMContentLoaded', () => {
-            // 初始化新闻
-            initNews();
-            
-            // 导航标签点击事件
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const category = tab.getAttribute('data-category');
-                    switchContent(category);
-                });
-            });
-            
-            // 搜索按钮点击事件
-            document.getElementById('search-btn').addEventListener('click', () => {
-                const keyword = document.getElementById('search-input').value;
-                searchNews(keyword);
-            });
-            
-            // 搜索框回车事件
-            document.getElementById('search-input').addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    const keyword = document.getElementById('search-input').value;
-                    searchNews(keyword);
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
